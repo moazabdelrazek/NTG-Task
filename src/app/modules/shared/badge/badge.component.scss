@@ -1,0 +1,27 @@
+@use "vars" as *;
+
+:host {
+    display: inline-block;
+}
+
+.app_badge {
+    min-width: 85px;
+    min-height: 30px;
+    display: inline-block;
+    &.primary {
+        color: $white;
+        background-color: $primary;
+    }
+    &.secondary {
+        color: $white;
+        background-color: $secondary;
+    }
+    &.success {
+        color: $green;
+        background-color: $light-green;
+    }
+    &.warning {
+        color: $orange;
+        background-color: $warm-beige;
+    }    
+}
