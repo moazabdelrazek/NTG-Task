@@ -5,7 +5,11 @@
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
     "paths": {
-      "@app/*": ["./src/app/*"]
+      "@app/*": ["./src/app/*"],
+      "@shared/*": ["./src/app/modules/shared/*"],
+      "@system/*": ["./src/app/modules/system/*"],
+      "@coreModule/*": ["./src/app/modules/core/*"],
+      "@icon/*": ["./src/app/modules/shared/icons/*"],
     },
     "strict": true,
     "noImplicitOverride": true,
