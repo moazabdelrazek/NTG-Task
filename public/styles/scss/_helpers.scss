@@ -73,7 +73,10 @@ $def_size: 8;
 @for $size from 1 through 24 {
     .font_#{$def_size} {
         font-size: $def_size + px;
-    }    
+    }
+    .line_height_#{$def_size} {
+        line-height: $def_size + px;;
+    }
     $def_size: $def_size + 2;
 }
 
