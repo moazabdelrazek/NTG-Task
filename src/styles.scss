@@ -5,3 +5,10 @@
 body {
     font-family: $primary-font;
 }
+
+.hr {
+    height: 2px;
+    display: block;
+    margin-block: 32px;
+    background-color: $cloud-blue;
+}
