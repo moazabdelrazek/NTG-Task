@@ -1,0 +1,11 @@
+.app_section_card {
+    h4 {
+        min-height: 55px;
+        position: relative;
+        svg {
+            top: 0;
+            right: -1px;
+            position: absolute;
+        }
+    }
+}
