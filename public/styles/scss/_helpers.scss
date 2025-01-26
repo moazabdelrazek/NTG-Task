@@ -1,0 +1,83 @@
+@use "vars" as *;
+
+// colors
+@each $name, $color in $theme-colors {  
+    .text_#{$name} {
+        color: $color;
+    }
+    .border_#{$name} {
+        border-color: $color;
+    }
+    .fill_#{$name} {
+        fill: $color;
+    }
+    .stroke_#{$name} {
+        stroke: $color;
+    }
+    .bg_#{$name} {
+        background-color: $color;
+    }
+}
+
+// sizes
+@mixin spacing($propName, $value) {
+
+    $positions: (start: 1, end: 2, top: 3, bottom: 4);
+
+    @each $dir, $index in $positions {
+        @if $index == 1 {
+            .#{$propName}_full {
+                #{$propName}: $value;
+            }
+        }
+        .#{$propName}_#{$dir} {
+            @if $index <= 2 {
+                #{$propName}-inline-#{$dir}: $value;
+            }
+            @else {
+                #{$propName}-block-#{$dir}: $value;
+            }
+        }
+    }
+}
+
+// 
+@for $size from 1 through 12 {
+
+    // margin and padding
+    @include spacing(margin, $size * 4 + px);
+    @include spacing(padding, $size * 4 + px);
+
+    // border radius
+    .border_radius {
+        border-radius: $size * 4 + px;
+    }
+
+    // border width
+    .border_solid {
+        border: $size + px solid;
+    }
+
+    // icon-size
+    .icon_#{$size * 4} {
+        display: inline-block;
+        width: $size * 4 + px;
+        height: $size * 4 + px;
+    }
+}
+
+// font-size
+$def_size: 8;
+@for $size from 1 through 24 {
+    .font_#{$def_size} {
+        font-size: $def_size + px;
+    }    
+    $def_size: $def_size + 2;
+}
+
+// font-weight
+@for $weight from 1 through 9 {
+    .font_#{$weight * 100} {
+        font-weight: $weight * 100;
+    }
+}

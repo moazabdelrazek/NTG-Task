@@ -1,0 +1,50 @@
+/**
+* colors
+*/
+$black: #000;
+$white: #FFFFFF;
+$primary: #52BDCC;
+$secondary: #4D6BA5;
+// Grays and Neutrals
+$gray: #70819D;
+$neutral-gray: #98A1A5;        // Neutral medium gray
+$dark-gray: #495770;           // Dark gray for text and active states
+$light-gray: #D2DCE0;          // Light gray for inactive elements
+$muted-gray: #D8D8D8;          // Muted subtle gray
+
+// Supporting Blues
+$soft-blue: #7E95C1;           // Muted soft blue
+$pale-blue: #A4B1C4;           // Very pale light blue
+
+// Green Accent
+$success: #1EB05B;       // Vibrant green for success cases
+$light-green: #E7F5EA;         // Light pastel green for backgrounds    
+
+/**
+* theme
+*/
+$theme-colors: (
+    black: $black,
+    white: $white,
+    primary: $primary,
+    secondary: $secondary,
+    // Grays and Neutrals
+    gray: $gray, 
+    neutral_gray: $neutral-gray,
+    dark_gray: $dark-gray,
+    light_gray: $light-gray,
+    muted_gray: $muted-gray,
+
+    // Supporting Blues
+    soft_blue: $soft-blue,
+    pale_blue: $pale-blue,
+
+    // Green Accent
+    success: $success,
+    light_green: $light-green
+);
+
+/**
+* fonts
+*/
+$primary-font: "IBMPlexSans"
