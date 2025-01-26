@@ -19,6 +19,8 @@ $pale-blue: #A4B1C4;           // Very pale light blue
 // Green Accent
 $green: #1EB05B;       // Vibrant green for success cases
 $light-green: #E7F5EA;         // Light pastel green for backgrounds
+$frost-blue: #E8EEF1;          // Frosty pale blue for soft backgrounds or borders
+$cloud-blue: #F4F8FA;          // Light cloud blue for page backgrounds or minimal sections
 
 $orange: #BF7A1F; 
 $warm-beige: #FDF2E5;          // Warm beige for background highlights
@@ -41,6 +43,8 @@ $theme-colors: (
     // Supporting Blues
     soft_blue: $soft-blue,
     pale_blue: $pale-blue,
+    frost_blue: $frost-blue,
+    cloud_blue: $cloud-blue,
 
     // Green Accent
     success: $green,
