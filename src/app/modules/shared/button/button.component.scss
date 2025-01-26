@@ -1,0 +1,53 @@
+@use "vars" as *;
+
+.app_btn {
+    overflow: hidden;
+    position: relative;
+    line-height: 20.8px;
+    transition: all .2s linear;
+    border: 1px solid currentColor;
+    &:hover {
+        &::before {
+            width: 100%;
+        }
+    }    
+    &::before {
+        inset: 0;
+        width: 0;
+        content: "";
+        position: absolute;
+        transition: width 70ms linear;
+    }
+    &:disabled {
+        &::after {
+            inset: 0;
+            z-index: 3;
+            content: "";
+            position: absolute;
+            background-color: rgba($black, 50%);;
+        }
+        &::before {
+            display: none;
+        }
+    }
+    &.primary {
+        color: $white;
+        border-color: $primary;
+        background-color: $primary;
+        &::before {
+            background-color: rgba($black, 50%);
+        }
+    }
+    &.secondary {
+        color: $primary;
+        border-color: $primary;
+        background-color: transparent;
+        &::before {
+            background-color: rgba($black, 3%);
+        }        
+    }    
+    .btn_content {
+        z-index: 1;
+        position: relative;
+    }
+}

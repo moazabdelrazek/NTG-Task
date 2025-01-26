@@ -1,0 +1,9 @@
+<button 
+    [ngClass]="Class"
+    [disabled]="Disabled"
+    class="app_btn hover font_16 font_500 padding_y_16 padding_x_24 border_radius_4 text-center"
+>
+    <span class="btn_content d-inline-block">
+        <ng-content select="*" />
+    </span>
+</button>
