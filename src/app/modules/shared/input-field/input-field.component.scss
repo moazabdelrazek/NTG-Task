@@ -1,0 +1,24 @@
+@use "vars" as *;
+
+:host {
+    display: block;
+}
+
+.app_input_field {
+    width: 100%;
+    overflow: hidden;
+    input {
+        width: 100%;
+        border: none;
+        min-height: 39px;
+        &::placeholder {
+            color: $pale-blue;
+        }
+        &:focus-visible {
+            outline: none;
+        }
+    }
+    ::ng-deep [app-icon] {
+        margin-inline-end: 12px;
+    }
+}
