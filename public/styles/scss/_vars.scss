@@ -17,8 +17,11 @@ $soft-blue: #7E95C1;           // Muted soft blue
 $pale-blue: #A4B1C4;           // Very pale light blue
 
 // Green Accent
-$success: #1EB05B;       // Vibrant green for success cases
-$light-green: #E7F5EA;         // Light pastel green for backgrounds    
+$green: #1EB05B;       // Vibrant green for success cases
+$light-green: #E7F5EA;         // Light pastel green for backgrounds
+
+$orange: #BF7A1F; 
+$warm-beige: #FDF2E5;          // Warm beige for background highlights
 
 /**
 * theme
@@ -40,8 +43,12 @@ $theme-colors: (
     pale_blue: $pale-blue,
 
     // Green Accent
-    success: $success,
-    light_green: $light-green
+    success: $green,
+    light_green: $light-green,
+
+    //
+    orange: $orange,
+    warm_beige: $warm-beige
 );
 
 /**
