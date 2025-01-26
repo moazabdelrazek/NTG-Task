@@ -1,0 +1,15 @@
+<ul class="list-unstyled mb-0">
+    <ng-container *ngFor="let path of Paths; let last = last">
+        <li 
+            [ngClass]="{
+                'text_neutral_gray font_14 font_400 line_height_18 d-inline-block': !last,
+                'text_dark_gray font_16 font_600 line_height_24 d-block margin_top_4': last,
+            }"
+        >
+            {{path}}
+            <ng-container *ngIf="!last">
+                <span class="d-inline-block margin_x_4"> / </span>
+            </ng-container>
+        </li>
+    </ng-container>
+</ul>
