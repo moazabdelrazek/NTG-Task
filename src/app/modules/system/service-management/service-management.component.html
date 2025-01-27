@@ -1,1 +1,306 @@
-<p>service-management works!</p>
+<p-toast />
+
+<!-- start add button -->
+<div class="text-end">
+    <app-button classList="primary" (click)="openNew()">
+        Add Service
+        <app-plus-icon class="margin_start_8" classList="fill_white" />
+    </app-button>
+</div>
+<!-- end add button -->
+
+<!-- start data table -->
+<div class="margin_top_32">
+    <p-table
+        #dt1
+        dataKey="id"
+        [rows]="10"
+        editMode="row"
+        [paginator]="true"
+        [showLoader]="true"
+        [loading]="IsLoading" 
+        [value]="$any(GetData$ | async)"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [globalFilterFields]="['name', 'code']"
+        [resizableColumns]="true" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}"
+    >
+    
+        <!-- start caption -->
+        <ng-template #caption>
+            <div class="filter_form d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <span class="text_gray font_16 font_500 line_height_20">
+                    Search Filters Filter
+                    <app-filter-icon class="margin_start_4" classList="stroke_pale_blue" />
+                </span>
+    
+                <!-- start filter` -->
+                <div class="controls d-flex justify-content-end align-items-center flex-wrap flex-lg-nowrap flex-grow-1 ">
+    
+                    <!-- start filter by text` -->
+                    <app-input-field 
+                        type="text"
+                        name="search"
+                        class="flex-grow-1 flex-lg-grow-0"
+                        placeholder="Search by service name or code"
+                        (input)="dt1.filterGlobal($any($event.target).value, 'contains')"
+                    >
+                        <app-search-icon app-icon classList="fill_pale_blue" />
+                    </app-input-field>
+                    <!-- end filter by text` -->
+    
+                    <!-- start filter by Status` -->
+                    <p-select 
+                        [options]="Status"
+                        optionLabel="label"
+                        placeholder="Status"
+                        optionValue="value"
+                        (onChange)="dt1.filter($event.value, 'status','equals')"
+                        class="flex-grow-1 flex-lg-grow-0 border_solid_1 border_radius_4 border_muted_gray font_16 font_500"
+                    >
+                        <ng-template #dropdownicon>
+                            <app-chevron-down-icon classList="fill_pale_blue" />
+                        </ng-template>
+                    </p-select>
+                    <!-- end filter by Status -->
+    
+                    <!-- start filter by type -->
+                    <p-select 
+                        [options]="Types"
+                        optionLabel="label"
+                        optionValue="value"
+                        placeholder="Select Price Type"
+                        (onChange)="dt1.filter($event.value, 'type','equals')"
+                        class="flex-grow-1 flex-lg-grow-0 border_solid_1 border_radius_4 border_muted_gray font_16 font_500"
+                    >
+                        <ng-template #dropdownicon>
+                            <app-chevron-down-icon classList="fill_pale_blue" />
+                        </ng-template>
+                    </p-select>
+                    <!-- end filter by type -->
+    
+                </div>
+                <!-- end filter` -->
+    
+            </div>
+        </ng-template>
+        <!-- end caption -->
+    
+        <!-- start header -->
+        <ng-template #header>
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex items-center">
+                        Service Name
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex items-center">
+                        Code
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex items-center">
+                        Type
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex items-center">
+                        Status
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                </th>
+                <th style="min-width:10rem">
+                </th>
+            </tr>
+        </ng-template>
+        <!-- end header -->
+    
+        <!-- start body -->
+        <ng-template #body let-service let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="service">
+                <td>
+                    <p-cellEditor>
+                        <ng-template #input>
+                            <app-input-field
+                                name="name"
+                                pInputText
+                                type="text"
+                                [(ngModel)]="service.name" />
+                        </ng-template>
+                        <ng-template #output>
+                            {{ service.name }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template #input>
+                            <app-input-field
+                                name="code"
+                                pInputText
+                                type="text"
+                                [(ngModel)]="service.code" />
+                        </ng-template>
+                        <ng-template #output>
+                            {{ service.code | uppercase }}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template #input>
+                            <p-select 
+                                appendTo="body"
+                                [options]="Types"
+                                optionValue="value"
+                                optionLabel="label"
+                                [(ngModel)]="service.type"
+                                class="flex-grow-1 flex-lg-grow-0 border_solid_1 border_radius_4 border_muted_gray font_16 font_500"
+                            >
+                                <ng-template #dropdownicon>
+                                    <app-chevron-down-icon classList="fill_pale_blue" />
+                                </ng-template>
+                            </p-select>
+                        </ng-template>
+                        <ng-template #output>
+                            {{service | serviceType | uppercase}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <p-cellEditor>
+                        <ng-template #input>
+                            <p-select 
+                                appendTo="body"
+                                [options]="Status"
+                                optionValue="value"
+                                optionLabel="label"
+                                [(ngModel)]="service.status"
+                                class="flex-grow-1 flex-lg-grow-0 border_solid_1 border_radius_4 border_muted_gray font_16 font_500"
+                            >
+                                <ng-template #dropdownicon>
+                                    <app-chevron-down-icon classList="fill_pale_blue" />
+                                </ng-template>
+                            </p-select>
+                        </ng-template>
+                        <ng-template #output>
+                            <app-badge [type]="(service | serviceStatus).badgeType">
+                                {{(service | serviceStatus).label}}
+                            </app-badge>
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td>
+                    <ng-container *ngIf="!editing">
+                        <div
+                            pInitEditableRow
+                            (click)="onRowEditInit(service)"
+                            class="d-flex align-items-center text_primary cursor_pointer"
+                        >
+                            <span class="margin_end_8">Edit</span>
+                            <app-edit-icon classList="fill_primary" />
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="editing">
+                        <div class="d-flex align-items-center gap-3 cursor_pointer">
+                            <button
+                                text
+                                pRipple
+                                pButton
+                                rounded
+                                type="button"
+                                pSaveEditableRow
+                                icon="pi pi-check"
+                                severity="secondary"
+                                (click)="onRowEditSave(service)"
+                            ></button>
+                            <button
+                                text
+                                pButton
+                                pRipple
+                                rounded
+                                type="button"
+                                pCancelEditableRow
+                                icon="pi pi-times"
+                                severity="secondary"
+                                (click)="onRowEditCancel(service, ri)"
+                            ></button>
+                        </div>
+                    </ng-container>
+                </td>
+                <td>
+                    <a [routerLink]="service.id" class="d-flex align-items-center text_primary text-decoration-none">
+                        <span class="margin_end_8">View</span>
+                        <app-eye-icon classList="fill_primary" />
+                    </a>
+                </td>
+            </tr>
+        </ng-template>
+        <!-- end body -->
+    
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="7">No Services found.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+<!-- end data table -->
+
+<!-- start dialog -->
+<p-dialog [(visible)]="ServiceDialog" [style]="{ width: '450px', height: '600px' }" header="Service Details" [modal]="true">
+    <!-- start content -->
+    <ng-template #content>
+        <form [formGroup]="FormService" (ngSubmit)="AddNewService()">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <label for="name" class="block font-bold mb-2">Name</label>
+                    <app-input-field name="name" type="text" formControlName="name" formControlName="name" placeholder="Type herr..." />
+                    <small class="text-danger" *ngIf="GetControlByName('name')?.errors && GetControlByName('name')?.touched">Name is required.</small>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="name" class="block font-bold mb-2">Code</label>
+                    <app-input-field name="code" type="text" formControlName="code" formControlName="code" placeholder="Type herr..." />
+                    <small class="text-danger" *ngIf="GetControlByName('code')?.errors && GetControlByName('name')?.touched">Code is required.</small>
+                </div>
+    
+                <div class="col-12 col-md-6 mb-4">
+                    <label for="Service Type" class="block font-bold mb-3">Type</label>
+                    <p-select
+                        class="w-100"
+                        inputId="type"
+                        [options]="Types"
+                        optionLabel="label"
+                        optionValue="value"
+                        formControlName="type"
+                        placeholder="Select a Type"
+                    />
+                </div>
+
+                <div class="col-12 col-md-6 mb-4">
+                    <label for="Service Status" class="block font-bold mb-3">Status</label>
+                    <p-select
+                        class="w-100"
+                        inputId="status"
+                        [options]="Status"
+                        optionLabel="label"
+                        optionValue="value"
+                        formControlName="status"
+                        placeholder="Select a Status"
+                    />
+                </div>
+            </div>
+        </form>
+    </ng-template>
+    <!-- end content -->
+
+    <!-- start footer -->
+    <ng-template #footer>
+        <p-button label="Cancel" icon="pi pi-times" text (click)="hideDialog()" />
+        <p-button [disabled]="FormService.invalid" label="Save" icon="pi pi-check" (click)="AddNewService()" />
+    </ng-template>
+    <!-- end footer -->
+
+</p-dialog>
+<!-- end dialog -->

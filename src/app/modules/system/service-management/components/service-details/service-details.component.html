@@ -1,0 +1,55 @@
+<!-- start Service Information -->
+<app-section-card title="Service Information" class="margin_top_48">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+            <app-inner-content title="Service Name (EN)" [description]="GetService.name" />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <app-inner-content title="Service Name (AR)" [description]="GetService.name" />
+        </div>
+        <div class="col-12 col-md-4">
+            <app-inner-content title="Service Type" [description]="GetService | serviceType | uppercase" />
+        </div>
+    </div>
+    <div class="hr"></div>
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+            <app-inner-content title="Service Code" [description]="GetService.code | uppercase"  />
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+            <app-inner-content title="Price List" description="100 SR" />
+        </div>
+    </div>
+</app-section-card>
+<!-- end Service Information -->
+
+<!-- start Service Description -->
+<app-section-card title="Service Description" class="margin_top_32">
+    <div class="row">
+        <div class="col-12">
+            <app-inner-content title="Service Arabic Description" description="description description description description description" />
+        </div>
+        <div class="hr"></div>
+        <div class="col-12">
+            <app-inner-content title="Service English Description" description="description description description description description" />
+        </div>
+    </div>
+</app-section-card>
+<!-- end Service Description -->
+
+<!-- start vat Information -->
+<app-section-card title="VAT Information" class="margin_top_32">
+    <div class="row">
+        <div class="col-12 col-sm-3">
+            <app-inner-content title="Has VAT?" description="Yes" />
+        </div>
+        <div class="col-12 col-sm-3">
+            <app-inner-content title="VAT (%)" description="13%" />
+        </div>
+    </div>
+</app-section-card>
+<!-- end vat Information -->
+
+<app-button classList="secondary margin_top_48" routerLink="../">
+    <app-left-icon class="margin_end_8" classList="fill_primary" /> Back
+</app-button>

@@ -1,0 +1,44 @@
+@use "vars" as *;
+
+p-table {
+    .p-datatable-header {
+        border-bottom: none;
+        margin-block-end: 40px;
+        padding: 0px !important;
+        .filter_form {
+            .controls {
+                gap: calc(32px / 2);
+                app-input-field {
+                    // width: 100%;
+                    flex-basis: 352px;
+
+                }
+                p-select {
+                    flex-basis: 256px;
+                    .p-select-label {
+                        color: $dark-gray;
+                    }
+                    .p-placeholder {
+                        color: $pale-blue;
+                    }
+                }
+            }
+        }
+    }
+    thead, tbody {
+        tr th, td {
+            padding: 16px !important;
+            font-size: 16px !important;
+            line-height: 1px !important;
+        }
+    }
+    thead tr th, td {
+        color: $gray !important;
+        border-bottom: 3px solid $cloud-blue !important;
+    }
+    tbody tr td {
+        font-weight: 400 !important;
+        color: $dark-gray !important;
+        border-bottom: 2px solid $cloud-blue !important;
+    }
+}
