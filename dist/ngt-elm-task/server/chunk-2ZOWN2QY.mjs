@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import"./chunk-X2SEQXRR.mjs";var e=[{path:"",redirectTo:"dashboard",pathMatch:"full"},{path:"auth",loadChildren:()=>import("./chunk-H6URENDW.mjs").then(t=>t.AuthPagesLayoutRoutes),\u0275entryName:"src/app/content-layout/auth-pages-layout/auth-pages-layout.routes.ts"},{path:"dashboard",title:"dashboard",loadChildren:()=>import("./chunk-HIPCC6ZW.mjs").then(t=>t.ContentPagesLayoutRoutes),\u0275entryName:"src/app/content-layout/content-pages-layout/content-pages-layout.routes.ts"}];export{e as ContentLayoutRoutes};

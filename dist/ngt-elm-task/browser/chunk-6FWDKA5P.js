@@ -1,0 +1,1 @@
+import"./chunk-7CGTOI24.js";var e=[{path:"",redirectTo:"dashboard",pathMatch:"full"},{path:"auth",loadChildren:()=>import("./chunk-SFSH36QX.js").then(t=>t.AuthPagesLayoutRoutes)},{path:"dashboard",title:"dashboard",loadChildren:()=>import("./chunk-U6GGGBLU.js").then(t=>t.ContentPagesLayoutRoutes)}];export{e as ContentLayoutRoutes};

@@ -1,0 +1,89 @@
+@use "vars" as *;
+
+// colors
+$color-elements: (app_btn, alert_btn, app_badge);
+$color-prefixes: (text: color, border: border-color, fill: fill, stroke: stroke, bg: background-color);
+@each $name, $color in $theme-colors {  
+
+    // prefixes
+    @each $prefix, $prop in $color-prefixes {
+        .#{$prefix}_#{$name} {
+            #{$prop}: $color !important;
+        }
+    }
+}
+
+// sizes
+@mixin spacing($propName, $value, $rate) {
+
+    .#{$propName}_full_#{$rate} {
+        #{$propName}: $value;
+    }
+    .#{$propName}_start_#{$rate} {
+        #{$propName}-inline-start: $value;
+    }
+    .#{$propName}_end_#{$rate} {
+        #{$propName}-inline-end: $value;
+    }
+    .#{$propName}_top_#{$rate} {
+        #{$propName}-block-start: $value;
+    }
+    .#{$propName}_bottom_#{$rate} {
+        #{$propName}-block-end: $value;
+    }
+    .#{$propName}_x_#{$rate} {
+        #{$propName}-inline-start: $value;
+        #{$propName}-inline-end: $value;
+    }
+    .#{$propName}_y_#{$rate} {
+        #{$propName}-block-start: $value;
+        #{$propName}-block-end: $value;
+    }    
+}
+
+// 
+@for $size from 1 through 12 {
+
+    // margin and padding
+    @include spacing(margin, $size * 4 + px, $size * 4);
+    @include spacing(padding, $size * 4 + px, $size * 4);
+
+    $positions: (full, start, end, top, bottom);
+    
+    // border radius
+    .border_radius_#{$size * 4} {
+        border-radius: $size * 4 + px !important;
+    }
+
+    // border width
+    .border_solid_#{$size} {
+        border-style: solid;
+        border-width: $size + px !important;
+    }
+
+    // icon-size
+    .icon_#{$size * 4} {
+        display: inline-block;
+        width: $size * 4 + px !important;
+        height: $size * 4 + px !important;
+    }
+}
+
+// font-size
+$def_size: 8;
+@for $size from 1 through 24 {
+    .font_#{$def_size} {
+        font-size: $def_size + px;
+    }
+    .line_height_#{$def_size} {
+        line-height: $def_size + px;;
+    }
+    $def_size: $def_size + 2;
+}
+
+// font-weight
+@for $weight from 1 through 9 {
+    .font_#{$weight * 100} {
+        font-weight: $weight * 100;
+    }
+}
