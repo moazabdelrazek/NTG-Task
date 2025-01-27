@@ -1,5 +1,10 @@
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+
+/**
+ * services
+ */
+import { TrackPathService } from './services/track-path.service';
 
 /**
  * shared components
@@ -17,6 +22,10 @@ import { ChevronDownIconComponent } from "@icon/svg/chevron-down-icon/chevron-do
   styleUrl: './header.component.scss',
   imports: [
     /**
+     * pipes
+     */
+    AsyncPipe,
+    /**
      * shared components
      */
     BreadCrumbComponent,
@@ -28,8 +37,17 @@ import { ChevronDownIconComponent } from "@icon/svg/chevron-down-icon/chevron-do
 })
 export class HeaderComponent {
 
-  private _router = inject(Router)
-  private _route = inject(ActivatedRoute)
+  /**
+   * inject
+   */
+  private _trackPath = inject(TrackPathService)
+
+  /**
+   * 
+   */
+  public get TrackPath() {
+    return this._trackPath.TrackPath.asObservable()
+  }
 
 
   /**
@@ -38,17 +56,7 @@ export class HeaderComponent {
   constructor() {}
 
   ngOnInit(): void {
-
-    // this._router
-    //   .events
-    //   .pipe(
-    //     filter(event => event instanceof NavigationEnd),
-    //   )
-    //   .subscribe({
-    //     next: _ => console.log(_, this._route)
-    //   })
-
-    // this._route?.title?.subscribe(console.log)
-  }  
+    
+  }
 
 }

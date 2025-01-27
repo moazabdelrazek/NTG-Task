@@ -4,8 +4,8 @@
         margin-inline-start: auto;
         max-width: calc(100% - 270px);
         .content_page {
-            overflow-y: auto;
-            max-height: 100vh;
+            // overflow-y: auto;
+            // max-height: 100vh;
             min-height: calc(100vh - 86px);
         }
     }
