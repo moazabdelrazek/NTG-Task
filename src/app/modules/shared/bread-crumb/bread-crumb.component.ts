@@ -12,6 +12,6 @@ export class BreadCrumbComponent {
   /**
    * @description Tree path
    */
-  @Input({ alias: "paths", required: true}) public Paths: string[] = [];
+  @Input({ alias: "paths", required: true}) public Paths: string[] | null = [];
 
 }

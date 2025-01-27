@@ -1,7 +1,8 @@
 import { RouterLink } from '@angular/router';
+import { Meta } from '@angular/platform-browser';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { AsyncPipe, JsonPipe, NgIf, UpperCasePipe } from '@angular/common';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AsyncPipe, NgIf, UpperCasePipe } from '@angular/common';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 /**
  * libs
@@ -152,6 +153,7 @@ export class ServiceManagementComponent {
   }
 
   constructor(
+    private _meta: Meta,
     private _fb: FormBuilder,
     private _messageService: MessageService,
     private _serviceManagement: ServiceManagementService,
@@ -169,7 +171,12 @@ export class ServiceManagementComponent {
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+    //
+    this._meta.addTag({name: 'description', content: "Service Management lab lab lab"})
+
+  }
 
   /**
    * @description primeng exp 
