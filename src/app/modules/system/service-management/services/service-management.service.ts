@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, delay, share, Subject, tap } from 'rxjs';
+import { BehaviorSubject, delay, of, share, Subject, switchMap, tap } from 'rxjs';
 
 /**
  * interfaces
@@ -9,29 +9,27 @@ import { IService } from '../interfaces/service';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceService {
+export class ServiceManagementService {
 
   /**
    * @description loading state while data has coming
    */
-  public IsLoading: boolean = true;
+  public IsLoading: boolean = false;
 
 
   /**
-   * @description store _services in Observable to simulate http request
+   * @description to store services in Observable
    */
-  private _services$ = new BehaviorSubject<IService[]>([]).pipe(
+  public Services$ = new BehaviorSubject<IService[]>([]);
+
+  /**
+   * @description get store data as simulate http request
+   */
+  public GetData$ = this.Services$.pipe(
     tap(_ => this.IsLoading = true),
     delay(2000),
     tap(_ => this.IsLoading = false)
-  ) as BehaviorSubject<IService[]>;;
-
-  /**
-   * 
-   */
-  public get Services$() {
-    return this._services$
-  }
+  )
 
   constructor() {
 
@@ -44,7 +42,7 @@ export class ServiceService {
       { "id": 3, "name": "Property Rent", "code": "p-t063", "type": 2, "status": 0 },
       { "id": 4, "name": "Property Sale", "code": "p-t050", "type": 2, "status": 1 },
       { "id": 5, "name": "Property Lease", "code": "p-t023", "type": 1, "status": 0 },
-      { "id": 6, "name": "Property Rent", "code": "p-t090", "type": 1, "status": 0 },
+      { "id": 6, "name": "Property Rent", "code": "p-t090", "type": -1, "status": -1 },
       { "id": 7, "name": "Property Transfer", "code": "p-t014", "type": 1, "status": 1 },
       { "id": 8, "name": "Property Lease", "code": "p-t032", "type": 2, "status": 0 },
       { "id": 9, "name": "Property Transfer", "code": "p-t062", "type": 2, "status": 1 },
@@ -74,7 +72,29 @@ export class ServiceService {
     /**
      * 
      */
-    this._services$.next(services);
+    this.Update(services);
+
+  }
+
+  /**
+   * 
+   */
+  public Update(list: IService[]): void {
+    this.Services$.next(list)
+  }
+
+  /**
+   * 
+   */
+  public GetById(id: number): IService | null {
+    
+    // get 
+    const s =  this.Services$.value.find(s => s.id == id);
+    
+    // 
+    if (s != null) return s;
+
+    return null;
 
   }
 }
