@@ -2,6 +2,10 @@
 @use "vars" as *;
 @use "_helpers" as *;
 
+// primeicons
+@import "primeicons/primeicons.css";
+
+
 body {
     font-family: $primary-font;
 }
@@ -11,4 +15,12 @@ body {
     display: block;
     margin-block: 32px;
     background-color: $cloud-blue;
+}
+
+.container-fluid {
+    padding: 0 25px !important;
+}
+
+.cursor_pointer {
+    cursor: pointer;
 }

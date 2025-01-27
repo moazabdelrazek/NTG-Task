@@ -8,7 +8,7 @@ $color-prefixes: (text: color, border: border-color, fill: fill, stroke: stroke,
     // prefixes
     @each $prefix, $prop in $color-prefixes {
         .#{$prefix}_#{$name} {
-            #{$prop}: $color;
+            #{$prop}: $color !important;
         }
     }
 }
@@ -52,20 +52,20 @@ $color-prefixes: (text: color, border: border-color, fill: fill, stroke: stroke,
     
     // border radius
     .border_radius_#{$size * 4} {
-        border-radius: $size * 4 + px;
+        border-radius: $size * 4 + px !important;
     }
 
     // border width
     .border_solid_#{$size} {
         border-style: solid;
-        border-width: $size + px;
+        border-width: $size + px !important;
     }
 
     // icon-size
     .icon_#{$size * 4} {
         display: inline-block;
-        width: $size * 4 + px;
-        height: $size * 4 + px;
+        width: $size * 4 + px !important;
+        height: $size * 4 + px !important;
     }
 }
 
