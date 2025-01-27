@@ -1,0 +1,39 @@
+.layout_container {
+    .layout_page {
+        width: 100%;
+        margin-inline-start: auto;
+        max-width: calc(100% - 270px);
+        .content_page {
+            overflow-y: auto;
+            max-height: 100vh;
+            min-height: calc(100vh - 86px);
+        }
+    }
+}
+
+@media screen and (max-width: 767.98px) {
+    .layout_container {
+        .app_sidebar {
+            &:not(:hover) {
+                max-width: 70px;
+                app-logo-icon svg {
+                    width: 55px !important;
+                    g {
+                        transform: translate(-1566px, -2269.334px) !important;
+                        path:not(.logo_text) {
+                            display: none;
+                        }
+                    }
+                }
+                .menu {
+                    .tab_title {
+                        display: none;
+                    }
+                }
+            }
+        }
+        .layout_page {
+            max-width: calc(100% - 70px) !important
+        }
+    }
+}

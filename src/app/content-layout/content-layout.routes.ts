@@ -9,6 +9,7 @@ export const ContentLayoutRoutes: Routes = [
     },
     { 
         path: 'dashboard',
+        title: "dashboard",
         loadChildren: () => import('./content-pages-layout/content-pages-layout.routes')
         .then(r => r.ContentPagesLayoutRoutes)
     }    

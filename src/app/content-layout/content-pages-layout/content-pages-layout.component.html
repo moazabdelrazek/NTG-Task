@@ -1,1 +1,11 @@
-<router-outlet />
+<div class="layout_container">
+    <app-sidebar />
+    <div class="layout_page">
+        <app-header />
+        <div class="container">
+            <div class="content_page padding_top_24">
+                <router-outlet />
+            </div>
+        </div>
+    </div>
+</div>
