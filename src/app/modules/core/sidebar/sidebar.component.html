@@ -1,0 +1,50 @@
+<aside class="app_sidebar bg_secondary padding_y_40">
+    <div class="wrap_logo text-center">
+        <app-logo-icon />
+    </div>
+    <ul class="menu list-unstyled mb-0">
+        <li>
+            <a 
+                routerLink="task-details"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}"
+                class="font_16 font_700 line_height_20 padding_full_24 text-decoration-none"
+            >
+                <span class="d-flex align-items-end">
+                    <app-alert-icon class="margin_end_16" classList="fill_white" />
+                    <span class="tab_title">
+                        Task Details
+                    </span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a 
+                routerLinkActive="active" 
+                routerLink="service-management"
+                class="font_16 font_700 line_height_20 padding_full_24 text-decoration-none"
+            >
+                <span class="d-flex align-items-end">
+                    <app-service-value-icon class="margin_end_16" classList="fill_white" />
+                    <span class="tab_title">
+                        Service Management
+                    </span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a 
+                routerLinkActive="active" 
+                routerLink="invoice-management"
+                class="font_16 font_700 line_height_20 padding_full_24 text-decoration-none"
+            >
+                <span class="d-flex align-items-end">
+                    <app-price-package-icon class="margin_end_16" classList="fill_white" />
+                    <span class="tab_title">
+                        Invoice Management
+                    </span>
+                </span>
+            </a>
+        </li>
+    </ul>
+</aside>

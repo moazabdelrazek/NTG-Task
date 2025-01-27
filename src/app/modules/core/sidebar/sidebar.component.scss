@@ -1,0 +1,62 @@
+@use "vars" as *;
+
+:host {
+    width: 100%;
+    display: block;
+    max-width: 270px;
+}
+
+.app_sidebar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 500;
+    height: 100%;
+    display: block;
+    position: fixed;
+    max-width: 270px;
+    transition: all 0.2s linear;
+    background-repeat: no-repeat;
+    background-position: left 599px;
+    background-image: url(/images/FAQ_Pattern.png);
+    .wrap_logo {
+        margin-bottom: 127px;
+    }
+    .menu {
+        overflow: hidden;
+        li {
+            white-space: nowrap;
+            a {
+                display: block;
+                min-height: 69px;
+                position: relative;
+                color: $light-gray;
+                svg path {
+                    fill: $light-gray;;
+                }
+                &.active  {
+                    color: $white;
+                    &::after {
+                        width: 100%;
+                    }
+                    svg path {
+                        fill: $white;;
+                    }                    
+                }
+                &::after {
+                    inset: 0;
+                    width: 0;
+                    z-index: 1;
+                    content: "";
+                    position: absolute;
+                    transition: width 0.2s linear;
+                    background-color: rgba($white, 4%);
+                }
+                span {
+                    z-index: 2;
+                    position: relative;
+                }
+            }
+        }
+    }
+}
